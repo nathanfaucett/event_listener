@@ -1,0 +1,27 @@
+{
+  "name": "event_listener",
+  "version": "0.0.1",
+  "description": "event listener for the browser and node.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nathanfaucett/event_listener.git"
+  },
+  "main": "src/index.js",
+  "keywords": [
+    "event_listener",
+    "event_listener.js"
+  ],
+  "author": "Nathan Faucett",
+  "license": "BSD-2-Clause",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "grunt": "",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-jsbeautifier": "",
+    "mocha": "^2.0.1"
+  },
+  "dependencies": {
+    "type": "nathanfaucett/type",
+    "environment": "nathanfaucett/environment"
+  }
+}
