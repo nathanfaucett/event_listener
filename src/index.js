@@ -36,7 +36,10 @@ eventListener.off = function(target, eventType, callback) {
     }
 };
 
-eventListener.emit = dispatchEvent;
+eventListener.emit = function(target, eventType, event) {
+
+    dispatchEvent(target, eventType, event);
+};
 
 
 if (type.isFunction(document.addEventListener)) {
