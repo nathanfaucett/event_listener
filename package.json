@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "type": "nathanfaucett/type",
-    "utils": "nathanfaucett/utils",
     "environment": "nathanfaucett/environment"
   }
 }
