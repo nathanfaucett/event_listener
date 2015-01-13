@@ -1,4 +1,5 @@
 var type = require("type"),
+    utils = require("utils"),
     environment = require("environment");
 
 
@@ -38,7 +39,7 @@ eventListener.off = function(target, eventType, callback) {
 
 eventListener.emit = function(target, eventType, event) {
 
-    dispatchEvent(target, eventType, event);
+    dispatchEvent(target, eventType, type.isObject(event) ? event : {});
 };
 
 
@@ -61,7 +62,7 @@ if (type.isFunction(document.addEventListener)) {
 
     dispatchEvent = function(target, eventType, event) {
 
-        target.dispatchEvent(event);
+        target.dispatchEvent(utils.mixin(new Event(eventType), event));
     };
 } else if (type.isFunction(document.attachEvent)) {
 
@@ -86,8 +87,9 @@ if (type.isFunction(document.addEventListener)) {
     };
 
     dispatchEvent = function(target, eventType, event) {
+        var doc = target.ownerDocument || document;
 
-        target.fireEvent("on" + eventType, event);
+        target.fireEvent("on" + eventType, utils.mixin(doc.createEventObject(), event));
     };
 } else {
 
