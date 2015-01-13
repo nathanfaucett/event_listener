@@ -116,10 +116,11 @@ if (type.isFunction(document.addEventListener)) {
     };
 
     dispatchEvent = function(target, eventType, event) {
-        var type = "on" + eventType;
+        var ontype = "on" + eventType;
 
-        if (target[type]) {
-            target[type](event);
+        if (type.isFunction(target[ontype])) {
+            event.type = eventType;
+            target[ontype](event);
         }
     };
 }
