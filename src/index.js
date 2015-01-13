@@ -6,7 +6,7 @@ var eventListener = module.exports,
     reSpliter = /[\s]+/,
     document = environment.document,
 
-    listenToEvent, captureEvent, removeEvent;
+    listenToEvent, captureEvent, removeEvent, dispatchEvent;
 
 
 eventListener.on = function(target, eventType, callback) {
@@ -36,6 +36,7 @@ eventListener.off = function(target, eventType, callback) {
     }
 };
 
+eventListener.emit = dispatchEvent;
 
 
 if (type.isFunction(document.addEventListener)) {
@@ -53,6 +54,11 @@ if (type.isFunction(document.addEventListener)) {
     removeEvent = function(target, eventType, callback) {
 
         target.removeEventListener(eventType, callback, false);
+    };
+
+    dispatchEvent = function(target, eventType, event) {
+
+        target.dispatchEvent(event);
     };
 } else if (type.isFunction(document.attachEvent)) {
 
@@ -74,6 +80,11 @@ if (type.isFunction(document.addEventListener)) {
     removeEvent = function(target, eventType, callback) {
 
         target.detachEvent("on" + eventType, callback);
+    };
+
+    dispatchEvent = function(target, eventType, event) {
+
+        target.fireEvent("on" + eventType, event);
     };
 } else {
 
@@ -97,5 +108,13 @@ if (type.isFunction(document.addEventListener)) {
 
         target["on" + eventType] = null;
         return true;
+    };
+
+    dispatchEvent = function(target, eventType, event) {
+        var type = "on" + eventType;
+
+        if (target[type]) {
+            target[type](event);
+        }
     };
 }
