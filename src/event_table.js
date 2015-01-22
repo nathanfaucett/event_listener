@@ -1,4 +1,4 @@
-var type = require("type"),
+var isNode = require("is_node"),
     environment = require("environment");
 
 
@@ -182,7 +182,7 @@ module.exports = {
     error: function(target) {
         if (XMLHttpRequest && target instanceof XMLHttpRequest) {
             return window.ProgressEvent || window.Event;
-        } else if (type.isNode(target)) {
+        } else if (isNode(target)) {
             return window.UIEvent || window.Event;
         } else {
             return window.Event;

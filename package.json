@@ -21,7 +21,9 @@
     "mocha": "^2.0.1"
   },
   "dependencies": {
-    "type": "nathanfaucett/type",
+    "is_function": "nathanfaucett/is_function",
+    "is_object": "nathanfaucett/is_object",
+    "is_node": "nathanfaucett/is_node",
     "environment": "nathanfaucett/environment"
   }
 }

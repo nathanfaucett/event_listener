@@ -1,12 +1,17 @@
-var type = require("type"),
-    environment = require("environment");
+var isObject = require("is_object"),
+    isFunction = require("is_function"),
+    environment = require("environment"),
+    eventTable = require("./event_table");
 
 
 var eventListener = module.exports,
     reSpliter = /[\s]+/,
     document = environment.document,
 
-    listenToEvent, captureEvent, removeEvent, dispatchEvent, eventTable;
+    listenToEvent, captureEvent, removeEvent, dispatchEvent;
+
+
+window.Event = window.Event || function EmptyEvent() {};
 
 
 eventListener.on = function(target, eventType, callback) {
@@ -38,12 +43,16 @@ eventListener.off = function(target, eventType, callback) {
 
 eventListener.emit = function(target, eventType, event) {
 
-    return dispatchEvent(target, eventType, type.isObject(event) ? event : {});
+    return dispatchEvent(target, eventType, isObject(event) ? event : {});
+};
+
+eventListener.getEventConstructor = function(target, eventType) {
+    var getter = eventTable[eventType];
+    return isFunction(getter) ? getter(target) : window.Event;
 };
 
 
-if (type.isFunction(document.addEventListener)) {
-    eventTable = require("./event_table");
+if (isFunction(document.addEventListener)) {
 
     listenToEvent = function(target, eventType, callback) {
 
@@ -62,11 +71,11 @@ if (type.isFunction(document.addEventListener)) {
 
     dispatchEvent = function(target, eventType, event) {
         var getter = eventTable[eventType],
-            EventType = type.isFunction(getter) ? getter(target) : Event;
+            EventType = isFunction(getter) ? getter(target) : window.Event;
 
         return !!target.dispatchEvent(new EventType(eventType, event));
     };
-} else if (type.isFunction(document.attachEvent)) {
+} else if (isFunction(document.attachEvent)) {
 
     listenToEvent = function(target, eventType, callback) {
 
@@ -120,7 +129,7 @@ if (type.isFunction(document.addEventListener)) {
     dispatchEvent = function(target, eventType, event) {
         var onType = "on" + eventType;
 
-        if (type.isFunction(target[onType])) {
+        if (isFunction(target[onType])) {
             event.type = eventType;
             return !!target[onType](event);
         }
