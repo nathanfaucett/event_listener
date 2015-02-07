@@ -5,7 +5,10 @@ var isObject = require("is_object"),
 
 
 var eventListener = module.exports,
+
     reSpliter = /[\s]+/,
+
+    window = environment.window,
     document = environment.document,
 
     listenToEvent, captureEvent, removeEvent, dispatchEvent;
