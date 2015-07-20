@@ -7,6 +7,9 @@
     "url": "https://github.com/nathanfaucett/event_listener.git"
   },
   "main": "src/index.js",
+  "scripts": {
+    "example": "comn -f example/src/index.js -o example/index.js"
+  },
   "keywords": [
     "event_listener",
     "event_listener.js"
@@ -15,15 +18,15 @@
   "license": "BSD-2-Clause",
   "readmeFilename": "README.md",
   "devDependencies": {
+    "comn": "git://github.com/nathanfaucett/comn.git",
     "grunt": "",
     "grunt-contrib-jshint": "^0.10.0",
-    "grunt-jsbeautifier": "",
-    "mocha": "^2.0.1"
+    "grunt-jsbeautifier": ""
   },
   "dependencies": {
-    "is_function": "nathanfaucett/is_function",
-    "is_object": "nathanfaucett/is_object",
-    "is_node": "nathanfaucett/is_node",
-    "environment": "nathanfaucett/environment"
+    "is_function": "git://github.com/nathanfaucett/is_function.git",
+    "is_object": "git://github.com/nathanfaucett/is_object.git",
+    "is_node": "git://github.com/nathanfaucett/is_node.git",
+    "environment": "git://github.com/nathanfaucett/environment.git"
   }
 }
