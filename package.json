@@ -1,5 +1,5 @@
 {
-  "name": "event_listener",
+  "name": "@nathanfaucett/event_listener",
   "version": "0.0.1",
   "description": "event listener for the browser and node.js",
   "repository": {
@@ -18,15 +18,15 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "comn": "git://github.com/nathanfaucett/comn.git",
-    "grunt": "",
-    "grunt-contrib-jshint": "^0.10.0",
+    "@nathanfaucett/comn": "^0.0.1",
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
     "grunt-jsbeautifier": ""
   },
   "dependencies": {
-    "is_function": "git://github.com/nathanfaucett/is_function.git",
-    "is_object": "git://github.com/nathanfaucett/is_object.git",
-    "is_node": "git://github.com/nathanfaucett/is_node.git",
-    "environment": "git://github.com/nathanfaucett/environment.git"
+    "@nathanfaucett/is_function": "^0.0.1",
+    "@nathanfaucett/is_object": "^0.0.1",
+    "@nathanfaucett/is_node": "^0.0.1",
+    "@nathanfaucett/environment": "^0.0.1"
   }
 }

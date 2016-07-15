@@ -1,6 +1,6 @@
-var isObject = require("is_object"),
-    isFunction = require("is_function"),
-    environment = require("environment"),
+var isObject = require("@nathanfaucett/is_object"),
+    isFunction = require("@nathanfaucett/is_function"),
+    environment = require("@nathanfaucett/environment"),
     eventTable = require("./event_table");
 
 

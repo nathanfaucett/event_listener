@@ -1,5 +1,5 @@
-var isNode = require("is_node"),
-    environment = require("environment");
+var isNode = require("@nathanfaucett/is_node"),
+    environment = require("@nathanfaucett/environment");
 
 
 var window = environment.window,
